@@ -26,11 +26,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t vishalgujare27/html-repo:latest .
+          docker build -t vishalgujare27/mywebserver:latest .
 
       - name: Push Docker image
         run: |
-          docker push vishalgujare27/html-repo:latest
+          docker push vishalgujare27/mywebserver:latest
           
       - name: SSH into server and deploy container
         uses: appleboy/ssh-action@v0.1.5
@@ -41,4 +41,4 @@ jobs:
           script: |
             docker stop html-container || true
             docker rm html-container || true
-            docker run -d --name html-container -p 80:80 vishalgujare27/html-repo:latest
+            docker run -d --name html-container -p 80:80 vishalgujare27/mywebserver:latest
